@@ -1,0 +1,52 @@
+{
+  "launcher_settings": {
+    "hub_title": "My Private Core App Launcher",
+    "theme": "dark_minimal",
+    "webview_force_refresh_on_launch": true,
+    "allow_native_bridge_permissions": true
+  },
+  "my_portfolio_apps": [
+    {
+      "app_id": "firmament_engine",
+      "display_name": "The Firmament",
+      "target_live_url": "https://railway.app",
+      "icon_asset_path": "assets/icons/firmament.png",
+      "description": "Topocentric astrological calculation engine, decan layers, and nakshatra calculations.",
+      "webview_settings": {
+        "allow_file_uploads": true,
+        "allow_downloads": true,
+        "persist_session": true,
+        "external_links": "in_app",
+        "refresh_mode": "always"
+      }
+    },
+    {
+      "app_id": "esoteric_divination_analyser",
+      "display_name": "Esoteric Code Analytics",
+      "target_live_url": "https://your-hosted-divination-app-url.com",
+      "icon_asset_path": "assets/icons/divination.png",
+      "description": "Divination application integrating software code, file parsing, and I Ching/tarot logic.",
+      "webview_settings": {
+        "allow_file_uploads": true,
+        "allow_downloads": true,
+        "persist_session": true,
+        "external_links": "in_app",
+        "refresh_mode": "always"
+      }
+    },
+    {
+      "app_id": "rng_sports_tracker",
+      "display_name": "RNG & Sports Analytics",
+      "target_live_url": "https://your-hosted-sports-prediction-url.com",
+      "icon_asset_path": "assets/icons/sports.png",
+      "description": "Deterministic/statistical formulas for tracking RNG data outputs and processing MLB/sports metrics.",
+      "webview_settings": {
+        "allow_file_uploads": true,
+        "allow_downloads": true,
+        "persist_session": true,
+        "external_links": "in_app",
+        "refresh_mode": "always"
+      }
+    }
+  ]
+}
