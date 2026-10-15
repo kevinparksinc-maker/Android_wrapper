@@ -22,6 +22,7 @@ import {
   loadLauncherConfig,
   defaultWebViewSettings,
   withCacheBuster,
+  isConfiguredLauncherUrl,
 } from "@/lib/launcher-config";
 import { isNativeLauncher, LauncherWebView } from "@/lib/native-bridge";
 
@@ -72,8 +73,9 @@ function AppCard({
       transition={{ delay: index * 0.055, duration: 0.32, ease: [0.23, 1, 0.32, 1] }}
       whileTap={{ scale: 0.975 }}
       onClick={() => onLaunch(app)}
-      className="group relative flex min-h-44 w-full flex-col justify-between overflow-hidden rounded-[1.65rem] border border-white/[0.09] bg-[#151b26]/90 p-5 text-left shadow-[0_18px_50px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-[#1a2230] hover:shadow-[0_22px_60px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a7ff83]"
-      aria-label={`Open ${app.display_name}`}
+      disabled={!isConfiguredLauncherUrl(app.target_live_url)}
+      className="group disabled:cursor-not-allowed disabled:opacity-55 relative flex min-h-44 w-full flex-col justify-between overflow-hidden rounded-[1.65rem] border border-white/[0.09] bg-[#151b26]/90 p-5 text-left shadow-[0_18px_50px_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-[#1a2230] hover:shadow-[0_22px_60px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a7ff83]"
+      aria-label={isConfiguredLauncherUrl(app.target_live_url) ? `Open ${app.display_name}` : `${app.display_name} unavailable until its live HTTPS address is configured`}
     >
       <div
         className="pointer-events-none absolute -right-8 -top-10 h-28 w-28 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
@@ -87,6 +89,7 @@ function AppCard({
         />
       </div>
       <div className="relative pt-5">
+        {!isConfiguredLauncherUrl(app.target_live_url) && <p className="mb-2 text-xs font-bold text-amber-200">SET LIVE APP URL TO ENABLE</p>}
         <h2 className="font-display text-[1.05rem] font-semibold tracking-[-0.02em] text-white">
           {app.display_name}
         </h2>
