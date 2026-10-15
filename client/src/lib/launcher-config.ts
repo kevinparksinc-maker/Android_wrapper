@@ -107,3 +107,17 @@ export function withCacheBuster(url: string): string {
   target.searchParams.set("_launcher_refresh", String(Date.now()));
   return target.toString();
 }
+
+/** A repository/demo placeholder must never be offered as a working installed app. */
+export function isConfiguredLauncherUrl(url: string): boolean {
+  try {
+    const target = new URL(url);
+    return target.protocol === "https:" &&
+      target.hostname !== "railway.app" &&
+      !target.hostname.startsWith("your-hosted-") &&
+      !target.hostname.includes("example.com") &&
+      !target.hostname.includes("placeholder");
+  } catch {
+    return false;
+  }
+}
